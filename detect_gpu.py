@@ -20,16 +20,17 @@ GPU_TO_GFX = [
     (['rx 7800', 'rx 7700', 'w7700'], 'gfx110X', 'RDNA 3', True),
     (['rx 7700s', 'rx 7650', 'rx 7600', 'w7600', 'w7500', 'rx 7400', 'w7400'], 'gfx110X', 'RDNA 3', True),
     (['780m', '760m', '740m'], 'gfx110X', 'RDNA 3', True),
-    
-    # RDNA2 (gfx103x) - ONLY gfx1030 and gfx1032 fully supported
-    (['rx 6800m'], 'gfx103X', 'RDNA 2', False),
-    (['rx 6800s', 'rx 6700s'], 'gfx103X', 'RDNA 2', True),
-    (['rx 6950', 'rx 6900', 'rx 6800', 'w6800'], 'gfx103X', 'RDNA 2', True),
-    (['rx 6850', 'rx 6750', 'rx 6700'], 'gfx103X', 'RDNA 2', True),
-    (['rx 6650', 'rx 6600', 'w6600'], 'gfx103X', 'RDNA 2', True),
-    (['rx 6550', 'rx 6500', 'w6500', 'rx 6450', 'rx 6400', 'w6400', 'rx 6300', 'w6300'], 'gfx103X', 'RDNA 2', False),
-    (['680m', '660m'], 'gfx103X', 'RDNA 2', False),
-    (['610m'], 'gfx103X', 'RDNA 2', False),
+       
+    # RDNA2 (gfx103x) - SUPPORTED
+    (['rx 6950', 'rx 6900', 'rx 6800', 'w6800', 'v620'], 'gfx103X', 'RDNA 2', True),  # gfx1030
+    (['rx 6750', 'rx 6700', 'rx 6800m', 'rx 6700m', 'rx 6800s', 'rx 6700s'], 'gfx103X', 'RDNA 2', True),  # gfx1031
+    (['rx 6650', 'rx 6600', 'w6600', 'rx 6650m', 'rx 6600m', 'rx 6600s'], 'gfx103X', 'RDNA 2', True),  # gfx1032
+    (['rx 6500', 'w6500', 'rx 6500m'], 'gfx103X', 'RDNA 2', True),  # gfx1034
+
+    # RDNA2 (gfx103x) - NOT SUPPORTED
+    (['680m', '660m'], 'gfx103X', 'RDNA 2', False),  # gfx1035 - iGPU
+    (['610m'], 'gfx103X', 'RDNA 2', False),  # gfx1036 - iGPU
+    (['rx 6550', 'rx 6450', 'rx 6400', 'w6400', 'rx 6300', 'w6300'], 'gfx103X', 'RDNA 2', False),
 
     # RDNA1 (gfx101x)
     (['rx 5700', 'rx 5600'], 'gfx101X', 'RDNA 1', True),
