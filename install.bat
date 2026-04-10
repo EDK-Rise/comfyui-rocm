@@ -248,7 +248,7 @@ if "!arch!"=="gfx120X" (
         echo [!] Warning: rocm-sdk init failed, continuing anyway...
     )
 	echo [*] Installing PyTorch for RDNA4 ^(gfx120X^)...
-    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2/gfx120X-all/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
+    .\python_env\python.exe -m pip install --pre --index-url https://rocm.nightlies.amd.com/v2/gfx120X-all/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
     if errorlevel 1 goto :install_failed
     goto :install_requirements
 )
