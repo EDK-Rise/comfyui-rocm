@@ -10,13 +10,14 @@ Windows-only version of ComfyUI which uses AMD's official ROCm and PyTorch libra
 
 <img width="755" height="207" alt="image" src="https://github.com/user-attachments/assets/8683287c-16d4-4b3b-b238-7aab5f4aa830" />
 
-
 # NEW #
 * Added kijai's hfremotevae nodes , you can now use these for vae decoding (not encoding) for a faster, OOM free decoding for these model types : SD 1.5 , SDXL , Flux , HunyuanVideo and their variants (so for example any model that uses flux vae like the z-image can use this instead)
 
 <img width="1171" height="478" alt="image" src="https://github.com/user-attachments/assets/4d6c19e4-a9c5-4671-8155-92ef08258000" />
 
-
+<details>
+<summary><strong> :: older news :: </strong></summary>
+  
 * 9000 series (gfx1200) now uses torch 2.12.x by default (2.10 has problems with wan-ltxvideo etc. with these new gpus)
 * GPU detection fixed, again.
 * Added RDNA1 support.
@@ -25,6 +26,7 @@ Windows-only version of ComfyUI which uses AMD's official ROCm and PyTorch libra
 * Added advanced settings into `comfyui-rocm.bat` At default they would work without problems, you can modify if you know what you are doing.
 * Disabled comfy-aimdo check which keeps giving the same error about being nvidia only, useless for amd at the moment. aimdo is still installed and this was just a warning that shows up each time.
 * flash-attention now available for all rdna gpus.
+</details>
 
 ### Important Note
 **DON'T INSTALL** into your user directory or inside Windows or Program Files directories. Don't install to a directory with non-English characters. Best option is to install to the root directory of whichever drive you'd like.
