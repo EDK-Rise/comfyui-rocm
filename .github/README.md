@@ -12,6 +12,13 @@ Windows-only version of ComfyUI which uses AMD's official ROCm and PyTorch libra
 
 
 # NEW #
+* Added kijai's hfremotevae nodes , you can now use these for vae decoding (not encoding) for a faster, OOM free decoding for these model types : SD 1.5 , SDXL , Flux , HunyuanVideo and their variants (so for example any model that uses flux vae like the z-image can use this instead)
+
+<img width="1171" height="478" alt="image" src="https://github.com/user-attachments/assets/4d6c19e4-a9c5-4671-8155-92ef08258000" />
+
+
+* 9000 series (gfx1200) now uses torch 2.12.x by default (2.10 has problems with wan-ltxvideo etc. with these new gpus)
+* GPU detection fixed, again.
 * Added RDNA1 support.
 * Made gpu detection better for windows 11.
 * Added full python integration into embedded for better compiling (sage-attention etc needs these files)
@@ -52,3 +59,4 @@ install.bat
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 - [AMD TheRock Team](https://github.com/ROCm/TheRock)
 - [0xDELUXA](https://github.com/0xDELUXA)
+- [kijai](https://github.com/kijai)
