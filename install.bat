@@ -377,10 +377,11 @@ if errorlevel 1 (
 goto :install_complete
 
 :install_complete
+copy comfyui-rocm.bat comfyui-user.bat /y >NUL
 echo.
 echo ====================================================
 echo   Installation Complete!
-echo   Run "comfyui-rocm.bat" to start comfyui-rocm
+echo   Run "comfyui-user.bat" to start comfyui-rocm
 echo ====================================================
 goto :end
 
