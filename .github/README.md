@@ -11,6 +11,7 @@ On RDNA2 these are the supported & unsupported models:
 <img width="755" height="207" alt="image" src="https://github.com/user-attachments/assets/8683287c-16d4-4b3b-b238-7aab5f4aa830" />
 
 # NEW #
+* Added a simple updater, run it to keep your install of comfyui-rocm updated.
 * Added some tested workflows inside "sample-workflows" folder. Wan 2.2 i2v & ltxv2.3 distill model only and 2-stage dev model using distill lora workflows are added at the moment.
 * Added kijai's hfremotevae nodes. You can now use these for VAE decoding (not encoding) for faster, OOM-free decoding for these model types: SD 1.5, SDXL, Flux, HunyuanVideo and their variants (for example, any model that uses the Flux VAE like the z-image model can use this instead).
 
