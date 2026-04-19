@@ -7,7 +7,7 @@ import os
 GPU_TO_GFX = [
     # RDNA4 (gfx12xx)
     (['rx 9060'], 'gfx120X', 'RDNA 4', True),
-    (['rx 9070', 'r9070'], 'gfx120X', 'RDNA 4', True),
+    (['rx 9070', 'r9700', 'r9600'], 'gfx120X', 'RDNA 4', True),
     
     # RDNA3.5 (gfx115x)
     (['890m'], 'gfx1150', 'Strix Point', True),
