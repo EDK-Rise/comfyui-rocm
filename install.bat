@@ -338,8 +338,8 @@ curl -sL -o python_env\Lib\site-packages\sageattention\quant_per_block.py https:
 
 echo [*] Installing bitsandbytes if available...
 
-:: Skip unsupported architectures (MI300/MI350 series) as they are not supported by prebuilt wheels
-for %%G in (gfx90X gfx94X gfx950) do (
+:: Skip unsupported architectures (Radeon Pro VII / gfx906) as they are not supported by prebuilt wheels
+for %%G in (gfx90X) do (
     if /I "!arch!"=="%%G" (
         echo [*] Skipping bitsandbytes for !arch! - prebuilt wheels are not available, build from source required
         goto :bnb_done
