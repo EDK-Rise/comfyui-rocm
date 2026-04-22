@@ -348,7 +348,7 @@ for %%G in (gfx90X gfx94X gfx950) do (
 
 :: Install unified RDNA build
 echo [*] Installing bitsandbytes (unified RDNA build)...
-.\python_env\python.exe -m pip install https://github.com/0xDELUXA/bitsandbytes_win_rocm/releases/download/0.50.0.dev0-py3-rocm7-win_amd64_rdna/bitsandbytes-0.50.0.dev0-cp312-cp312-win_amd64.whl --quiet
+.\python_env\python.exe -m pip install https://github.com/0xDELUXA/bitsandbytes_win_rocm/releases/download/0.50.0.dev0-py3-rocm7-win_amd64_all/bitsandbytes-0.50.0.dev0-cp312-cp312-win_amd64.whl --quiet
 if errorlevel 1 goto :install_failed
 
 :bnb_done
