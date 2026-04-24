@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 title comfyui-rocm Installer
 echo ====================================================
 echo        comfyui-rocm - Automatic Installer
-echo [AMD RDNA1 * RDNA2 * RDNA3 * RDNA4 (6000s to 9000s)]
+echo   [AMD GCN5/Vega * RDNA1 * RDNA2 * RDNA3 * RDNA4]
 echo ====================================================
 echo.
 
@@ -295,6 +295,62 @@ if "!arch!"=="gfx950" (
     goto :install_requirements
 )
 
+if "!arch!"=="gfx900" (
+    echo [*] Installing ROCm for Vega 10 / GCN5 ^(gfx900^)...
+    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx900/ --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    .\python_env\scripts\rocm-sdk init >nul 2>&1
+    if errorlevel 1 (
+        echo [!] Warning: rocm-sdk init failed, continuing anyway...
+    )
+	echo [*] Installing PyTorch for Vega 10 / GCN5 ^(gfx900^)...
+    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx900/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    goto :install_requirements
+)
+
+if "!arch!"=="gfx906" (
+    echo [*] Installing ROCm for Vega 20 / Radeon VII ^(gfx906^)...
+    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx906/ --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    .\python_env\scripts\rocm-sdk init >nul 2>&1
+    if errorlevel 1 (
+        echo [!] Warning: rocm-sdk init failed, continuing anyway...
+    )
+	echo [*] Installing PyTorch for Vega 20 / Radeon VII ^(gfx906^)...
+    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx906/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    goto :install_requirements
+)
+
+if "!arch!"=="gfx908" (
+    echo [*] Installing ROCm for Arcturus / MI100 ^(gfx908^)...
+    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx908/ --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    .\python_env\scripts\rocm-sdk init >nul 2>&1
+    if errorlevel 1 (
+        echo [!] Warning: rocm-sdk init failed, continuing anyway...
+    )
+	echo [*] Installing PyTorch for Arcturus / MI100 ^(gfx908^)...
+    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx908/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    goto :install_requirements
+)
+
+if "!arch!"=="gfx90a" (
+    echo [*] Installing ROCm for Aldebaran / MI200 ^(gfx90a^)...
+    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx90a/ --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    .\python_env\scripts\rocm-sdk init >nul 2>&1
+    if errorlevel 1 (
+        echo [!] Warning: rocm-sdk init failed, continuing anyway...
+    )
+	echo [*] Installing PyTorch for Aldebaran / MI200 ^(gfx90a^)...
+    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx90a/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
+    if errorlevel 1 goto :install_failed
+    goto :install_requirements
+)
+
 echo [!] Unknown GPU architecture detected: !arch!
 pause
 exit /b 1
@@ -338,8 +394,8 @@ curl -sL -o python_env\Lib\site-packages\sageattention\quant_per_block.py https:
 
 echo [*] Installing bitsandbytes if available...
 
-:: Skip unsupported architectures (Radeon Pro VII / gfx906) as they are not supported by prebuilt wheels
-for %%G in (gfx90X) do (
+:: Skip unsupported architectures for bitsandbytes prebuilt wheels
+for %%G in (gfx90X gfx900 gfx906 gfx908 gfx90a) do (
     if /I "!arch!"=="%%G" (
         echo [*] Skipping bitsandbytes for !arch! - prebuilt wheels are not available, build from source required
         goto :bnb_done
