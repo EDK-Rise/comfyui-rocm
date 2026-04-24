@@ -27,10 +27,10 @@ GPU_TO_GFX = [
     (['rx 6650', 'rx 6600', 'w6600', 'rx 6650m', 'rx 6600m', 'rx 6600s'], 'gfx103X', 'RDNA 2', True),  # gfx1032
     (['rx 6500', 'w6500', 'rx 6500m'], 'gfx103X', 'RDNA 2', True),  # gfx1034
 
-    # RDNA2 (gfx103x) - NOT SUPPORTED
-    (['680m', '660m'], 'gfx103X', 'RDNA 2', False),  # gfx1035 - iGPU
-    (['610m'], 'gfx103X', 'RDNA 2', False),  # gfx1036 - iGPU
-    (['rx 6550', 'rx 6450', 'rx 6400', 'w6400', 'rx 6300', 'w6300'], 'gfx103X', 'RDNA 2', False),
+    # RDNA2 (gfx103x) - added support -0422
+    (['680m', '660m'], 'gfx103X', 'RDNA 2', True),   # gfx1035 - iGPU
+    (['610m'], 'gfx103X', 'RDNA 2', True),            # gfx1036 - iGPU
+    (['rx 6550', 'rx 6450', 'rx 6400', 'w6400', 'rx 6300', 'w6300'], 'gfx103X', 'RDNA 2', True),
 
     # RDNA1 (gfx101x)
     (['rx 5700', 'rx 5600'], 'gfx101X', 'RDNA 1', True),
@@ -40,6 +40,12 @@ GPU_TO_GFX = [
     (['radeon pro vii'], 'gfx90X', 'Radeon Pro VII', True),
     (['mi300a', 'mi300x', 'mi325x'], 'gfx94X', 'MI300/MI325', True),
     (['mi350x', 'mi355x'], 'gfx950', 'MI350/MI355', True),
+
+    # GCN5 / Vega (gfx900/906/908/90a)
+    (['rx vega', 'vega 64', 'vega 56', 'vega frontier'], 'gfx900', 'Vega 10 / GCN5', True),
+    (['radeon vii', 'vega 20'], 'gfx906', 'Vega 20 / GCN5', True),
+    (['instinct mi100'], 'gfx908', 'Arcturus / MI100', True),
+    (['instinct mi200', 'instinct mi210', 'instinct mi250'], 'gfx90a', 'Aldebaran / MI200', True),
 ]
 
 def detect_gpu_wmic():
@@ -139,7 +145,7 @@ def detect_gpu():
     
     # If we found AMD GPUs but couldn't match them
     print("\nGPU(s) found but architecture could not be identified.")
-    print("Only RDNA1, RDNA2, RDNA3, and RDNA4 architectures are supported.")
+    print("Only GCN, Vega, RDNA1, RDNA2, RDNA3, and RDNA4 architectures are supported.")
     print("Please check if your GPU is compatible with ROCm.")
     return None
 
