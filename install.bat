@@ -157,14 +157,14 @@ if "!arch!"=="gfx101X" (
 
 if "!arch!"=="gfx103X" (
     echo [*] Installing ROCm for RDNA2 ^(gfx103X^)...
-    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-dgpu/ --no-warn-script-location >nul 2>&1
+    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-all/ --no-warn-script-location >nul 2>&1
     if errorlevel 1 goto :install_failed
     .\python_env\scripts\rocm-sdk init >nul 2>&1 
     if errorlevel 1 (
         echo [!] Warning: rocm-sdk init failed, continuing anyway...
     )
 	echo [*] Installing PyTorch for RDNA2 ^(gfx103X^)...
-    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-dgpu/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
+    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-all/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
     if errorlevel 1 goto :install_failed
     goto :install_requirements
 )
