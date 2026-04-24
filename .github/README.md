@@ -4,22 +4,20 @@ Windows-only version of ComfyUI that uses AMD's official ROCm and PyTorch librar
 
 [includes auto-installation and popular performance-enhancing packages such as Triton, Sage Attention, Flash Attention, and bitsandbytes]
 
-- Currently supported GPUs: RDNA1, RDNA2 (everything except mobile GPUs and APUs), RDNA3 and RDNA4.
-
-On RDNA2 these are the supported & unsupported models:
-
-<img width="755" height="207" alt="image" src="https://github.com/user-attachments/assets/8683287c-16d4-4b3b-b238-7aab5f4aa830" />
+- Currently supported GPUs: GCN5 /Vega, RDNA1, RDNA2 , RDNA3 and RDNA4.
 
 # NEW #
+
+* Thanks to the latest updates on [TheRock](https://github.com/ROCm/TheRock) , we now have full gpu support from gcn5/vega to the latest RDNA4 gpu's.
 * Added a simple updater, run it to keep your install of comfyui-rocm updated.
 * Added some tested workflows inside "sample-workflows" folder. Wan 2.2 i2v & ltxv2.3 distill model only and 2-stage dev model using distill lora workflows are added at the moment.
-* Added kijai's hfremotevae nodes. You can now use these for VAE decoding (not encoding) for faster, OOM-free decoding for these model types: SD 1.5, SDXL, Flux, HunyuanVideo and their variants (for example, any model that uses the Flux VAE like the z-image model can use this instead).
-
-<img width="1171" height="478" alt="image" src="https://github.com/user-attachments/assets/4d6c19e4-a9c5-4671-8155-92ef08258000" />
 
 <details>
 <summary><strong> :: Older news :: </strong></summary>
 
+* Added kijai's hfremotevae nodes. You can now use these for VAE decoding (not encoding) for faster, OOM-free decoding for these model types: SD 1.5, SDXL, Flux, HunyuanVideo and their variants (for example, any model that uses the Flux VAE like the z-image model can use this instead).
+
+<img width="1171" height="478" alt="image" src="https://github.com/user-attachments/assets/4d6c19e4-a9c5-4671-8155-92ef08258000" />
 * 9000 series (gfx120X) now uses torch 2.12 by default (2.10 has issues with Wan/LTXVideo etc. + FP8 on these new GPUs).
 * GPU detection fixed, again.
 * Added RDNA1 support.
