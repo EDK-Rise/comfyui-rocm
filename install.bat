@@ -103,7 +103,7 @@ if errorlevel 1 (
 del "get-pip.py"
 
 :: Install build tools
-.\python_env\python.exe -m pip install --upgrade pip setuptools wheel --no-warn-script-location >nul 2>&1
+.\python_env\python.exe -m pip install --upgrade pip setuptools==81 wheel --no-warn-script-location >nul 2>&1
 if errorlevel 1 (
     echo [!] Error: Failed to install build tools
     pause
@@ -156,16 +156,13 @@ if "!arch!"=="gfx101X" (
 )
 
 if "!arch!"=="gfx103X" (
-    echo [*] Installing ROCm for RDNA2 ^(gfx103X^)...
-    .\python_env\python.exe -m pip install rocm[devel,libraries] --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-all/ --no-warn-script-location >nul 2>&1
+    echo [*] Installing ROCm + PyTorch for RDNA2 ^(gfx103X^)...
+    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-all/ "rocm[devel,libraries]==7.13.0a20260424" "torch==2.13.0a0+rocm7.13.0a20260424" "torchaudio==2.11.0a0+rocm7.13.0a20260424" "torchvision==0.27.0a0+rocm7.13.0a20260424" --no-warn-script-location >nul 2>&1
     if errorlevel 1 goto :install_failed
-    .\python_env\scripts\rocm-sdk init >nul 2>&1 
+    .\python_env\scripts\rocm-sdk init >nul 2>&1
     if errorlevel 1 (
         echo [!] Warning: rocm-sdk init failed, continuing anyway...
     )
-	echo [*] Installing PyTorch for RDNA2 ^(gfx103X^)...
-    .\python_env\python.exe -m pip install --index-url https://rocm.nightlies.amd.com/v2-staging/gfx103X-all/ torch torchaudio torchvision --no-warn-script-location >nul 2>&1
-    if errorlevel 1 goto :install_failed
     goto :install_requirements
 )
 
