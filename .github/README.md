@@ -8,6 +8,7 @@ Windows-only version of ComfyUI that uses AMD's official ROCm and PyTorch librar
 
 # NEW #
 
+* Added logging and `--debug` option for `install.bat` 
 * Thanks to the latest updates on [TheRock](https://github.com/ROCm/TheRock) , we now have full gpu support from gcn5/vega to the latest RDNA4 gpu's.
 * Added a simple updater, run it to keep your install of comfyui-rocm updated.
 * Added some tested workflows inside "sample-workflows" folder. Wan 2.2 i2v & ltxv2.3 distill model only and 2-stage dev model using distill lora workflows are added at the moment.
@@ -43,6 +44,7 @@ Windows-only version of ComfyUI that uses AMD's official ROCm and PyTorch librar
 ```bash
 install.bat
 ```
+* If you want detailed output to see what is installed / downloaded during installation process , use `install.bat --debug` instead.
 * This "hopefully" auto-detects your AMD GPU and installs the correct ROCm & PyTorch packages. I only have an RX 6800 and obviously cannot test other AMD GPUs.
 * This is partly portable and doesn't need Python installed on the system. You can try it separately with `ComfyUI-Zluda` for example, without interfering with your existing setup. It also doesn't need HIP installed, as those components are now installed into the venv with the ROCm packages.
 * You can use `comfyui-rocm.bat`, or put a shortcut to it on your desktop, to run the app later. My recommendation is to make a copy of `comfyui-rocm.bat` with another name and modify that copy, so that when updating you won't run into trouble.
