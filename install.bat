@@ -64,7 +64,7 @@ if exist "python_env\python.exe" (
 :: 2. Download Python Embeddable (for runtime)
 echo [*] [1/7] Downloading Python 3.12 Embeddable...
 if not exist "python_env" mkdir "python_env"
-curl -L "https://www.python.org/ftp/python/3.12.9/python-3.12.9-embed-amd64.zip" -o "python_embed.zip" --no-progress-meter %Q%
+curl -L --ssl-no-revoke "https://www.python.org/ftp/python/3.12.9/python-3.12.9-embed-amd64.zip" -o "python_embed.zip" --no-progress-meter %Q%
 if errorlevel 1 (
     echo [!] Error: Failed to download Python embeddable
     pause
@@ -73,7 +73,7 @@ if errorlevel 1 (
 
 :: 3. Download Python Full Installer (for dev files)
 echo [*] [2/7] Downloading Python development files...
-curl -L https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.zip -o python_full.zip --no-progress-meter %Q%
+curl -L --ssl-no-revoke https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.zip -o python_full.zip --no-progress-meter %Q%
 if errorlevel 1 (
     echo [!] Error: Failed to download Python installer
     del "python_embed.zip" %Q%
@@ -135,7 +135,7 @@ echo import site
 
 :: 8. Install Pip
 echo [*] [7/7] Installing Pip and build tools...
-curl -L "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" --no-progress-meter %Q%
+curl -L --ssl-no-revoke "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" --no-progress-meter %Q%
 if errorlevel 1 (
     echo [!] Error: Failed to download get-pip.py
     pause
